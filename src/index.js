@@ -1,4 +1,4 @@
-import {displayList} from './display'
+import {displayList, displayPageStructure} from './display'
 import {Todo} from './todo'
 
 
@@ -12,4 +12,5 @@ t1.setPriority(2);
 let l1 = [];
 l1.push(t1);
 
+displayPageStructure();
 displayList(l1);
