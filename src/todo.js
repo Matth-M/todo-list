@@ -32,6 +32,10 @@ export const Todo = function(title, description, dueDate, priority) {
 	function setDueDate(date) {
 		dueDate = date;
 	}
+
+	function deleteTodo() {
+
+	}
 	
 	return {
 		getTitle,

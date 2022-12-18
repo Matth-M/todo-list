@@ -16,6 +16,10 @@ function createTodoComponent(item) {
 	todoDescription.textContent = item.getDescription();
 	todo.appendChild(todoDescription);
 
+	const deleteBtn = document.createElement('button');
+	deleteBtn.textContent = "DELETE";
+	todo.appendChild(deleteBtn);
+
 	return todo;
 }
 
