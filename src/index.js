@@ -1,5 +1,6 @@
 import {displayList, displayPageStructure} from './display'
 import {Todo} from './todo'
+import {TodoList} from './todoList';
 
 
 let t1 = Todo();
@@ -9,8 +10,8 @@ t1.setTitle("Prendre le train");
 t1.setDescription("Faut bien rentrer chez soi");
 t1.setPriority(2);
 
-let l1 = [];
-l1.push(t1);
+const main = TodoList("main");
+main.addTodo(t1);
 
 displayPageStructure();
-displayList(l1);
+displayList(main.getList());
