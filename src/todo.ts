@@ -12,7 +12,8 @@ export interface Todo {
 	setTitle(t: string): void,
 	setPriority(p: number): void,
 	setDescription(d: string): void,
-
+	setIndex(i: number): void,
+	getIndex(): number,
 };
 
 export const Todo = function(title: string, description: string, dueDate: string, priority: number): Todo {
@@ -28,9 +29,10 @@ export const Todo = function(title: string, description: string, dueDate: string
 		return dueDate;
 	}
 
-	const getPriority = (): number => {
-		return priority;
+	function setDueDate(date: string) {
+		dueDate = date;
 	}
+
 
 	function setDescription(d: string): void {
 		description = d;
@@ -41,13 +43,24 @@ export const Todo = function(title: string, description: string, dueDate: string
 		title = t;
 	}
 
+	const getPriority = (): number => {
+		return priority;
+	}
+
 	// The higher the most urgent
 	function setPriority(p: number) {
 		priority = p;
 	}
 
-	function setDueDate(date: string) {
-		dueDate = date;
+
+	let _index = 0;
+
+	function setIndex(index: number) {
+		_index = index;
+	}
+
+	function getIndex() {
+		return _index;
 	}
 	
 	return {
@@ -59,5 +72,7 @@ export const Todo = function(title: string, description: string, dueDate: string
 		setTitle,
 		setDescription,
 		setDueDate,
+		setIndex,
+		getIndex,
 	}
 };
