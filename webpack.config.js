@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	mode: 'development',
 	entry: {
-		index: './src/index.js',
+		index: './src/index.ts',
 	},
 	mode: 'development',
 	devtool: 'inline-source-map',
@@ -35,9 +35,17 @@ module.exports = {
 				test: /\.s[ac]ss$/i,
 				use: ["style-loader", "css-loader", "sass-loader"],
 			},
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
 		],
 	},
 	optimization: {
 		runtimeChunk: 'single',
+	},
+	resolve: {
+		extensions: ['.tsx', '.ts', '.js'],
 	},
 };

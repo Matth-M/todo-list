@@ -1,11 +1,13 @@
 import './main.scss';
+import {Todo} from './todo'
+import { TodoList } from './todoList';
 
-function createTodoComponent(item) {
+function createTodoComponent(item: Todo) {
 	const todo = document.createElement('div');
 	todo.classList.add('todo');
 
 	const todoPriority = document.createElement('p');
-	todoPriority.textContent = item.getPriority();
+	todoPriority.textContent = item.getPriority().toString();
 	todo.appendChild(todoPriority);
 
 	const todoTitle = document.createElement('h2');
@@ -23,9 +25,9 @@ function createTodoComponent(item) {
 	return todo;
 }
 
-export function displayList(list) {
+export function displayList(list: TodoList) {
 	const root = document.querySelector('.root');
-	list.forEach((todo) => {
+	list.getList().forEach((todo: Todo) => {
 		root.appendChild(createTodoComponent(todo));
 	});
 }
