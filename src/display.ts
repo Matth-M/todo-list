@@ -2,7 +2,7 @@ import './main.scss';
 import {Todo} from './todo'
 import { TodoList } from './todoList';
 
-function createTodoComponent(item: Todo) {
+function createTodoComponent(item: Todo): Element {
 	const todo = document.createElement('div');
 	todo.classList.add('todo');
 
@@ -29,14 +29,17 @@ function createTodoComponent(item: Todo) {
 	return todo;
 }
 
-export function displayList(list: TodoList) {
-	const root = document.querySelector('.root');
+function createListComponent(list: TodoList): Element {
+	const listComponent = document.createElement('div');
+
 	list.getList().forEach((todo: Todo) => {
-		root.appendChild(createTodoComponent(todo));
+		listComponent.appendChild(createTodoComponent(todo));
 	});
+
+	return listComponent;
 }
 
-export function createHeaderComponent() {
+function createHeaderComponent(): Element {
 	const element = document.createElement('header');
 
 	const appTitle = document.createElement('h1');
@@ -46,8 +49,8 @@ export function createHeaderComponent() {
 	return element;
 }
 
-export function displayPageStructure() {
+export function displayPageStructure(list: TodoList): void {
 	const root = document.querySelector('.root');
 	root.appendChild(createHeaderComponent());
-
+	root.appendChild(createListComponent(list))
 }
