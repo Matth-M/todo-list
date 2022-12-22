@@ -1,10 +1,12 @@
 import './main.scss';
 import {Todo} from './todo'
 import { TodoList } from './todoList';
+import { addDeleteBtnHandler } from './events'
 
-function createTodoComponent(item: Todo): Element {
+function createTodoComponent(item: Todo, index: number): Element {
 	const todo = document.createElement('div');
 	todo.classList.add('todo');
+	todo.setAttribute('index', index.toString());
 
 	const todoPriority = document.createElement('p');
 	todoPriority.textContent = item.getPriority().toString();
@@ -24,6 +26,7 @@ function createTodoComponent(item: Todo): Element {
 
 	const deleteBtn = document.createElement('button');
 	deleteBtn.textContent = "DELETE";
+	deleteBtn.classList.add('delete')
 	todo.appendChild(deleteBtn);
 
 	return todo;
@@ -32,8 +35,8 @@ function createTodoComponent(item: Todo): Element {
 function createListComponent(list: TodoList): Element {
 	const listComponent = document.createElement('div');
 
-	list.getList().forEach((todo: Todo) => {
-		listComponent.appendChild(createTodoComponent(todo));
+	list.getList().forEach((todo: Todo, index) => {
+		listComponent.appendChild(createTodoComponent(todo, index));
 	});
 
 	return listComponent;
@@ -49,8 +52,12 @@ function createHeaderComponent(): Element {
 	return element;
 }
 
-export function displayPageStructure(list: TodoList): void {
+export function displayApp(list: TodoList): void {
 	const root = document.querySelector('.root');
+	while(root.hasChildNodes()){
+		root.removeChild(root.firstChild);
+	}
 	root.appendChild(createHeaderComponent());
 	root.appendChild(createListComponent(list))
+	addDeleteBtnHandler(list);
 }

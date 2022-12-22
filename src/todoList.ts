@@ -6,6 +6,7 @@ export interface TodoList {
 	getList(): Todo[],
 	getTag(): string,
 	addTodo(todo: Todo): void,
+	deleteTodo(index: number): void,
 };
 
 export const TodoList = (tag: string): TodoList => {
@@ -23,9 +24,14 @@ export const TodoList = (tag: string): TodoList => {
 		list.push(todo);
 	}
 
+	const deleteTodo = (index: number) => {
+		list.splice(index, 1);
+	}
+
 	return {
 		getList,
 		getTag,
 		addTodo,
+		deleteTodo,
 	}
 }

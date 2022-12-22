@@ -1,4 +1,4 @@
-import {displayPageStructure} from './display'
+import {displayApp} from './display'
 import {Todo} from './todo'
 import {TodoList} from './todoList';
 
@@ -15,4 +15,4 @@ const mainList = TodoList("main");
 mainList.addTodo(t1);
 mainList.addTodo(t2);
 
-displayPageStructure(mainList);
+displayApp(mainList);
