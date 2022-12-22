@@ -14,6 +14,10 @@ function createTodoComponent(item: Todo) {
 	todoTitle.textContent = item.getTitle();
 	todo.appendChild(todoTitle);
 
+	const todoDueDate = document.createElement('p');
+	todoDueDate.textContent = item.getDueDate();
+	todo.appendChild(todoDueDate);
+
 	const todoDescription = document.createElement('p');
 	todoDescription.textContent = item.getDescription();
 	todo.appendChild(todoDescription);
