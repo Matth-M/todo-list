@@ -1,8 +1,6 @@
 import { Todo } from "./todo";
 
 export interface TodoList {
-	// list: Todo[],
-	// tag: string,
 	getList(): Todo[],
 	getTag(): string,
 	addTodo(todo: Todo): void,
