@@ -1,12 +1,11 @@
 import './main.scss';
 import {Todo} from './todo'
 import { TodoList } from './todoList';
-import { addDeleteBtnHandler } from './events'
+import { deleteBtnHandler, addButtonHandler } from './events'
 
 function createTodoComponent(item: Todo, index: number): Element {
 	const todo = document.createElement('div');
 	todo.classList.add('todo');
-	todo.setAttribute('index', index.toString());
 
 	const todoPriority = document.createElement('p');
 	todoPriority.textContent = item.getPriority().toString();
@@ -27,6 +26,7 @@ function createTodoComponent(item: Todo, index: number): Element {
 	const deleteBtn = document.createElement('button');
 	deleteBtn.textContent = "DELETE";
 	deleteBtn.classList.add('delete')
+	deleteBtn.setAttribute('index', index.toString());
 	todo.appendChild(deleteBtn);
 
 	return todo;
@@ -54,23 +54,58 @@ function createHeaderComponent(): Element {
 
 // Component creating todo item
 function createAddTodoComponent(): Element {
+	// Component
 	const component = document.createElement('div');
 	component.classList.add('addInputContainer');
 	component.id = 'addInputContainer';
 
-	const inputContainer = document.createElement('form');
+	// Input container
+	const inputsContainer = document.createElement('form');
 
-	const nameInput = document.createElement('input');
-	inputContainer.appendChild(nameInput);
+	// Title
+	const titleDiv = createInputElement('titleInput', 'Title', 'text');
+	inputsContainer.appendChild(titleDiv);
 
-	component.appendChild(inputContainer);
+	// Description
+	const descriptionDiv = createInputElement('descriptionInput', 'Description', 'text');
+	inputsContainer.appendChild(descriptionDiv);
 
+	// Due Date
+	const dueDateDiv = createInputElement('dueDateInput', 'Due Date', 'text');
+	inputsContainer.appendChild(dueDateDiv);
+
+	// Priority
+	const priorityDiv = createInputElement('priorityInput', 'Priority', 'number');
+	inputsContainer.appendChild(priorityDiv);
+
+	// Add the input container
+	component.appendChild(inputsContainer);
+
+	// Create the add button
 	const addBtn = document.createElement('button');
 	addBtn.classList.add('add');
 	addBtn.textContent = 'ADD';
+	addBtn.id = 'addTodoBtn'
 	component.appendChild(addBtn);
 
 	return component;
+}
+
+function createInputElement(inputId: string, labelContent: string, type: string) {
+	const inputContainer = document.createElement('div');
+
+	const input = document.createElement('input');
+	input.type = type;
+	input.id = inputId;
+
+	const label = document.createElement('label');
+	label.setAttribute('for', inputId);
+	label.textContent = labelContent;
+
+	inputContainer.appendChild(label);
+	inputContainer.appendChild(input);
+
+	return inputContainer;
 }
 
 export function displayApp(list: TodoList): void {
@@ -81,5 +116,6 @@ export function displayApp(list: TodoList): void {
 	root.appendChild(createHeaderComponent());
 	root.appendChild(createAddTodoComponent());
 	root.appendChild(createListComponent(list))
-	addDeleteBtnHandler(list);
+	deleteBtnHandler(list);
+	addButtonHandler(list);
 }
