@@ -52,7 +52,20 @@ function createHeaderComponent(): Element {
 	return element;
 }
 
-// Component creating todo item
+function navComponent(...lists: TodoList[]): Element {
+	const nav = document.createElement('nav');
+	lists.forEach((list) => {
+		// Links to display the selected list
+		const linkToList = document.createElement('a');
+		linkToList.href = '#';
+		linkToList.textContent = list.getTag();
+		nav.appendChild(linkToList);
+	});
+
+	return nav;
+}
+
+// Form receiving the inforùation to create a new todo
 function createAddTodoComponent(): Element {
 	// Component
 	const component = document.createElement('div');
@@ -115,6 +128,7 @@ export function displayApp(list: TodoList): void {
 		root.removeChild(root.firstChild);
 	}
 	root.appendChild(createHeaderComponent());
+	root.appendChild(navComponent(list, list, list));
 	root.appendChild(createAddTodoComponent());
 	root.appendChild(createListComponent(list))
 	deleteBtnHandler(list);
