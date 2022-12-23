@@ -52,12 +52,34 @@ function createHeaderComponent(): Element {
 	return element;
 }
 
+// Component creating todo item
+function createAddTodoComponent(): Element {
+	const component = document.createElement('div');
+	component.classList.add('addInputContainer');
+	component.id = 'addInputContainer';
+
+	const inputContainer = document.createElement('form');
+
+	const nameInput = document.createElement('input');
+	inputContainer.appendChild(nameInput);
+
+	component.appendChild(inputContainer);
+
+	const addBtn = document.createElement('button');
+	addBtn.classList.add('add');
+	addBtn.textContent = 'ADD';
+	component.appendChild(addBtn);
+
+	return component;
+}
+
 export function displayApp(list: TodoList): void {
 	const root = document.querySelector('.root');
 	while(root.hasChildNodes()){
 		root.removeChild(root.firstChild);
 	}
 	root.appendChild(createHeaderComponent());
+	root.appendChild(createAddTodoComponent());
 	root.appendChild(createListComponent(list))
 	addDeleteBtnHandler(list);
 }
