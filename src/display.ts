@@ -34,6 +34,7 @@ function createTodoComponent(item: Todo, index: number): Element {
 
 function createListComponent(list: TodoList): Element {
 	const listComponent = document.createElement('div');
+	listComponent.classList.add('listContainer');
 
 	list.getList().forEach((todo: Todo, index) => {
 		listComponent.appendChild(createTodoComponent(todo, index));
@@ -127,10 +128,15 @@ export function displayApp(list: TodoList): void {
 	while(root.hasChildNodes()){
 		root.removeChild(root.firstChild);
 	}
+
 	root.appendChild(createHeaderComponent());
 	root.appendChild(navComponent(list, list, list));
-	root.appendChild(createAddTodoComponent());
-	root.appendChild(createListComponent(list))
+
+	const main = document.createElement('main');
+	main.appendChild(createAddTodoComponent());
+	main.appendChild(createListComponent(list))
+	root.appendChild(main);
+
 	deleteBtnHandler(list);
 	addButtonHandler(list);
 }
