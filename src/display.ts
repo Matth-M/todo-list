@@ -91,6 +91,7 @@ function createAddTodoComponent(): Element {
 	return component;
 }
 
+// Used to create all the inputs in the form to add a todo item
 function createInputElement(inputId: string, labelContent: string, type: string) {
 	const inputContainer = document.createElement('div');
 
