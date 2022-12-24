@@ -1,3 +1,56 @@
+$todo-container-bg-color: beige;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100vh;
+}
+
+.root {
+	display: grid;
+	grid-template-rows: 100px;
+	grid-template-columns: 200px;
+	grid-template-areas:
+	"header header"
+	"nav main"
+	;
+	align-content: stretch;
+	height: 100%;
+}
+
+header {
+	grid-area: header;
+}
+
+nav {
+	grid-area: nav;
+}
+
+main {
+	grid-area: main;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	padding: 0 15px;
+}
+
+.listContainer {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
 .todo {
-	background-color: beige;
+	background-color: $todo-container-bg-color;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+a {
+	text-decoration: none;
 }
