@@ -20,10 +20,11 @@ for(let i = 0; i < 5; i++){
 	workList.addTodo(Todo('WorkItem', 'Gotta work', '02/01/2023', 1));
 }
 
-// Stores all the lists and set their tag as a key
 // This list is used when clicking on the links in the navbar to display a specific list
+// The text content of the link is the tag of the todoList 
+// It is used as a key in this object to retrieve it when a click occurs
 
-let listOfList: {
+export let listOfList: {
 	[index: string]: TodoList,
 } = {
 	'main': mainList,

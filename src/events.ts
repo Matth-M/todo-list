@@ -1,6 +1,7 @@
 import {TodoList} from './todoList' 
 import { Todo } from './todo'
 import {displayApp} from './display'
+import { listOfList } from './index';
 
 export function deleteBtnHandler(list: TodoList) {
 	const deleteBtns = document.querySelectorAll('.todo > .delete');
@@ -27,5 +28,15 @@ export function addButtonHandler(list: TodoList){
 
 		list.addTodo(todo);
 		displayApp(list);
+	});
+}
+
+export function listLinkBtnHandler() {
+	const links = document.querySelectorAll('nav  a');
+	links.forEach((link) => {
+		link.addEventListener('click', () => {
+			const tag = link.textContent;
+			displayApp(listOfList[tag]);
+		});
 	});
 }

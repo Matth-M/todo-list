@@ -1,7 +1,8 @@
 import './main.scss';
 import {Todo} from './todo'
 import { TodoList } from './todoList';
-import { deleteBtnHandler, addButtonHandler } from './events'
+import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler } from './events'
+import { listOfList } from '.';
 
 function createTodoComponent(item: Todo, index: number): Element {
 	const todo = document.createElement('div');
@@ -53,7 +54,7 @@ function createHeaderComponent(): Element {
 	return element;
 }
 
-function navComponent(...lists: TodoList[]): Element {
+function navComponent(lists: TodoList[]): Element {
 	const nav = document.createElement('nav');
 	const ul = document.createElement('ul');
 	lists.forEach((list) => {
@@ -135,7 +136,16 @@ export function displayApp(list: TodoList): void {
 	}
 
 	root.appendChild(createHeaderComponent());
-	root.appendChild(navComponent(list, list, list));
+
+	// Get all the todoList in the form of an array
+	// so we can call navComponent() with it
+	let allTodoLists: TodoList[] = [];
+	for(let key in listOfList) {
+		if(listOfList.hasOwnProperty(key)) {
+			allTodoLists.push(listOfList[key]);
+		}
+	}
+	root.appendChild(navComponent(allTodoLists));
 
 	const main = document.createElement('main');
 	main.appendChild(createAddTodoComponent());
@@ -144,4 +154,5 @@ export function displayApp(list: TodoList): void {
 
 	deleteBtnHandler(list);
 	addButtonHandler(list);
+	listLinkBtnHandler();
 }
