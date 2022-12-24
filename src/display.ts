@@ -81,6 +81,9 @@ function createAddTodoComponent(): Element {
 
 	// Input container
 	const inputsContainer = document.createElement('form');
+	const legend = document.createElement('legend');
+	legend.textContent = 'Add a Todo item';
+	inputsContainer.appendChild(legend);
 
 	// Title
 	const titleDiv = createInputElement('titleInput', 'Title', 'text');
