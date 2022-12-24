@@ -39,3 +39,11 @@ export function listLinkBtnHandler() {
 		});
 	});
 }
+
+export function addListBtnHandler() {
+	const addListBtn = document.querySelector('#addList');
+	addListBtn.addEventListener('click', () => {
+		listOfList['new'] = TodoList('new');
+		displayApp(listOfList['new'])
+	});
+}

@@ -1,7 +1,7 @@
 import './main.scss';
 import {Todo} from './todo'
 import { TodoList } from './todoList';
-import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler } from './events'
+import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler } from './events'
 import { listOfList } from '.';
 
 function createTodoComponent(item: Todo, index: number): Element {
@@ -67,7 +67,12 @@ function navComponent(lists: TodoList[]): Element {
 		ul.appendChild(li);
 	});
 
+	const addListBtn = document.createElement('button');
+	addListBtn.id = 'addList';
+	addListBtn.textContent = 'Create new list';
+
 	nav.appendChild(ul);
+	nav.appendChild(addListBtn);
 
 	return nav;
 }
@@ -158,4 +163,5 @@ export function displayApp(list: TodoList): void {
 	deleteBtnHandler(list);
 	addButtonHandler(list);
 	listLinkBtnHandler();
+	addListBtnHandler();
 }
