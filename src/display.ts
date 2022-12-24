@@ -77,6 +77,25 @@ function navComponent(lists: TodoList[]): Element {
 	return nav;
 }
 
+function editListTagComponent(list: TodoList) {
+	const form = document.createElement('form');
+
+	// List Tag edit fieldset
+	const fieldsetListTag = document.createElement('fieldset');
+	const fieldsetListTagLegend = document.createElement('legend');
+	fieldsetListTagLegend.textContent = 'Change TodoList tag';
+	fieldsetListTag.appendChild(fieldsetListTagLegend);
+
+	const listTagInput = document.createElement('input');
+	listTagInput.placeholder = list.getTag();
+	listTagInput.id = 'editListTag';
+	fieldsetListTag.appendChild(listTagInput);
+
+	form.appendChild(fieldsetListTag);
+
+	return form;
+}
+
 // Form receiving the inforùation to create a new todo
 function createAddTodoComponent(): Element {
 	// Component
@@ -156,6 +175,7 @@ export function displayApp(list: TodoList): void {
 	root.appendChild(navComponent(allTodoLists));
 
 	const main = document.createElement('main');
+	main.appendChild(editListTagComponent(list));
 	main.appendChild(createAddTodoComponent());
 	main.appendChild(createListComponent(list))
 	root.appendChild(main);
