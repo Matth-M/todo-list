@@ -55,13 +55,18 @@ function createHeaderComponent(): Element {
 
 function navComponent(...lists: TodoList[]): Element {
 	const nav = document.createElement('nav');
+	const ul = document.createElement('ul');
 	lists.forEach((list) => {
 		// Links to display the selected list
+		const li = document.createElement('li');
 		const linkToList = document.createElement('a');
 		linkToList.href = '#';
 		linkToList.textContent = list.getTag();
-		nav.appendChild(linkToList);
+		li.appendChild(linkToList);
+		ul.appendChild(li);
 	});
+
+	nav.appendChild(ul);
 
 	return nav;
 }
