@@ -98,35 +98,42 @@ function editListTagComponent(list: TodoList) {
 
 // Form receiving the inforùation to create a new todo
 function createAddTodoComponent(): Element {
-	// Component
+	// component container
 	const component = document.createElement('div');
 	component.classList.add('addInputContainer');
 	component.id = 'addInputContainer';
 
-	// Input container
-	const inputsContainer = document.createElement('form');
-	const legend = document.createElement('legend');
-	legend.textContent = 'Add a Todo item';
-	inputsContainer.appendChild(legend);
+	// Form
+	const form = document.createElement('form');
+
+
+	// Todo Creation
+	const fieldsetTodo = document.createElement('fieldset');
+	const fieldsetTodoLegend = document.createElement('legend');
+	fieldsetTodoLegend.textContent = 'Add a Todo item';
+	fieldsetTodo.appendChild(fieldsetTodoLegend);
 
 	// Title
-	const titleDiv = createInputElement('titleInput', 'Title', 'text');
-	inputsContainer.appendChild(titleDiv);
+	const titleDiv = createInputComponent('titleInput', 'Title', 'text');
+	fieldsetTodo.appendChild(titleDiv);
 
 	// Description
-	const descriptionDiv = createInputElement('descriptionInput', 'Description', 'text');
-	inputsContainer.appendChild(descriptionDiv);
+	const descriptionDiv = createInputComponent('descriptionInput', 'Description', 'text');
+	fieldsetTodo.appendChild(descriptionDiv);
 
 	// Due Date
-	const dueDateDiv = createInputElement('dueDateInput', 'Due Date', 'text');
-	inputsContainer.appendChild(dueDateDiv);
+	const dueDateDiv = createInputComponent('dueDateInput', 'Due Date', 'text');
+	fieldsetTodo.appendChild(dueDateDiv);
 
 	// Priority
-	const priorityDiv = createInputElement('priorityInput', 'Priority', 'number');
-	inputsContainer.appendChild(priorityDiv);
+	const priorityDiv = createInputComponent('priorityInput', 'Priority', 'number');
+	fieldsetTodo.appendChild(priorityDiv);
+
+	// End of fieldsetTodo
+	form.appendChild(fieldsetTodo);
 
 	// Add the input container
-	component.appendChild(inputsContainer);
+	component.appendChild(form);
 
 	// Create the add button
 	const addBtn = document.createElement('button');
@@ -139,7 +146,7 @@ function createAddTodoComponent(): Element {
 }
 
 // Used to create all the inputs in the form to add a todo item
-function createInputElement(inputId: string, labelContent: string, type: string) {
+function createInputComponent(inputId: string, labelContent: string, type: string) {
 	const inputContainer = document.createElement('div');
 
 	const input = document.createElement('input');
