@@ -15,4 +15,20 @@ const mainList = TodoList("main");
 mainList.addTodo(t1);
 mainList.addTodo(t2);
 
-displayApp(mainList);
+const workList = TodoList('work');
+for(let i = 0; i < 5; i++){
+	workList.addTodo(Todo('WorkItem', 'Gotta work', '02/01/2023', 1));
+}
+
+// Stores all the lists and set their tag as a key
+// This list is used when clicking on the links in the navbar to display a specific list
+
+let listOfList: {
+	[index: string]: TodoList,
+} = {
+	'main': mainList,
+}
+
+listOfList[workList.getTag()] = workList;
+
+displayApp(workList);
