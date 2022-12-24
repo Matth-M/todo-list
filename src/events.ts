@@ -23,7 +23,6 @@ export function addButtonHandler(list: TodoList){
 		const dueDate: HTMLInputElement = document.querySelector('#dueDateInput');
 		const priority: HTMLInputElement = document.querySelector('#priorityInput');
 
-		console.log(title);
 		const todo = Todo(title.value, description.value, dueDate.value, Number(priority.value));
 
 		list.addTodo(todo);
