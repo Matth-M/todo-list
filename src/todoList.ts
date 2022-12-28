@@ -5,25 +5,32 @@ export interface TodoList {
 	getTag(): string,
 	addTodo(todo: Todo): void,
 	deleteTodo(index: number): void,
+	setTag(tag: string): void,
 };
 
 export const TodoList = (tag: string): TodoList => {
-	let list: Todo[] = [];
+	let _list: Todo[] = [];
+
+	let _tag = tag;
 
 	const getList = () => {
-		return list;
+		return _list;
 	}
 
 	const getTag = () => {
-		return tag;
+		return _tag;
+	}
+
+	const setTag = (tag: string) => {
+		_tag = tag;
 	}
 
 	const addTodo = (todo: Todo) => {
-		list.push(todo);
+		_list.push(todo);
 	}
 
 	const deleteTodo = (index: number) => {
-		list.splice(index, 1);
+		_list.splice(index, 1);
 	}
 
 	return {
@@ -31,5 +38,6 @@ export const TodoList = (tag: string): TodoList => {
 		getTag,
 		addTodo,
 		deleteTodo,
+		setTag,
 	}
 }
