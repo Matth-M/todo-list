@@ -52,8 +52,11 @@ export function editListTagBtnHandler(list: TodoList) {
 	const editTagBtn = document.querySelector('#editListTag');
 	const editTagInput: HTMLInputElement = document.querySelector('#editTagInput');
 	editTagBtn.addEventListener('click', () => {
-		list.setTag(editTagInput.value);
-		listOfList[list.getTag()] = list;
+		const oldTag: string = list.getTag();
+		const newTag = editTagInput.value;
+		list.setTag(newTag);
+		listOfList[newTag] = listOfList[oldTag];
+		delete listOfList[oldTag];
 		displayApp(list);
 	});
 }
