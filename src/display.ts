@@ -8,6 +8,7 @@ import { listOfList } from '.';
 function createTodoComponent(item: Todo, index: number): Element {
 	const todo = document.createElement('div');
 	todo.classList.add('todo');
+	todo.setAttribute('index', index.toString());
 
 	const todoPriority = document.createElement('p');
 	todoPriority.textContent = item.getPriority().toString();
@@ -28,7 +29,6 @@ function createTodoComponent(item: Todo, index: number): Element {
 	const deleteBtn = document.createElement('button');
 	deleteBtn.textContent = "DELETE";
 	deleteBtn.classList.add('delete')
-	deleteBtn.setAttribute('index', index.toString());
 	todo.appendChild(deleteBtn);
 
 	return todo;

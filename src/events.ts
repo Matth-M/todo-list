@@ -5,9 +5,11 @@ import { listOfList } from './index';
 
 export function deleteBtnHandler(list: TodoList) {
 	const deleteBtns = document.querySelectorAll('.todo > .delete');
-	deleteBtns.forEach((btn) => {
+	deleteBtns.forEach((btn: HTMLButtonElement) => {
 		btn.addEventListener('click', () => {
-			const index = Number(btn.getAttribute('index'));
+			// Get the index of the current todo item
+			const container = btn.parentElement;
+			const index = Number(container.getAttribute('index'));
 
 			list.deleteTodo(index);
 			displayApp(list);
