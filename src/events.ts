@@ -47,3 +47,13 @@ export function addListBtnHandler() {
 		displayApp(listOfList['new'])
 	});
 }
+
+export function editListTagBtnHandler(list: TodoList) {
+	const editTagBtn = document.querySelector('#editListTag');
+	const editTagInput: HTMLInputElement = document.querySelector('#editTagInput');
+	editTagBtn.addEventListener('click', () => {
+		list.setTag(editTagInput.value);
+		listOfList[list.getTag()] = list;
+		displayApp(list);
+	});
+}

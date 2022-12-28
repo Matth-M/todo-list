@@ -1,7 +1,8 @@
 import './main.scss';
 import {Todo} from './todo'
 import { TodoList } from './todoList';
-import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler } from './events'
+
+import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler, editListTagBtnHandler } from './events'
 import { listOfList } from '.';
 
 function createTodoComponent(item: Todo, index: number): Element {
@@ -88,10 +89,23 @@ function editListTagComponent(list: TodoList) {
 
 	const listTagInput = document.createElement('input');
 	listTagInput.placeholder = list.getTag();
+
 	listTagInput.id = 'editListTag';
 	fieldsetListTag.appendChild(listTagInput);
 
 	form.appendChild(fieldsetListTag);
+
+	listTagInput.id = 'editTagInput';
+	fieldsetListTag.appendChild(listTagInput);
+
+	const editBtn = document.createElement('button');
+	editBtn.setAttribute('type', 'button'); //Stop the page from reloading when clicked
+	editBtn.textContent = 'EDIT';
+	editBtn.id = 'editListTag'
+
+	form.appendChild(fieldsetListTag);
+	form.appendChild(editBtn);
+
 
 	return form;
 }
@@ -190,5 +204,9 @@ export function displayApp(list: TodoList): void {
 	deleteBtnHandler(list);
 	addButtonHandler(list);
 	listLinkBtnHandler();
+
 	addListBtnHandler();
+
+	addListBtnHandler();
+	editListTagBtnHandler(list);
 }
