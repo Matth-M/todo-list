@@ -1,6 +1,6 @@
-import {TodoList} from './todoList' 
+import { TodoList } from './todoList'
 import { Todo } from './todo'
-import {displayApp} from './display'
+import { displayApp } from './display'
 import { listOfList } from './index';
 
 export function deleteBtnHandler(list: TodoList) {
@@ -17,7 +17,7 @@ export function deleteBtnHandler(list: TodoList) {
 	});
 }
 
-export function addButtonHandler(list: TodoList){
+export function addButtonHandler(list: TodoList) {
 	const addBtn = document.querySelector('#addTodoBtn');
 	addBtn.addEventListener('click', () => {
 		const title: HTMLInputElement = document.querySelector('#titleInput');
@@ -63,7 +63,7 @@ export function editListTagBtnHandler(list: TodoList) {
 	});
 }
 
-export function todoItemDetailInputEventHandler(list: TodoList){
+export function todoItemDetailInputEventHandler(list: TodoList) {
 	// We get all the todo items displayed on the page
 	const todoItems = document.querySelectorAll('.todo');
 	todoItems.forEach(todoItem => {
@@ -71,19 +71,19 @@ export function todoItemDetailInputEventHandler(list: TodoList){
 		const itemContent = todoItem.childNodes;
 		itemContent.forEach((child: HTMLElement) => {
 			// We search which part of the todo item we are changing
-			if(child.classList.contains('priority')) {
+			if (child.classList.contains('priority')) {
 				child.addEventListener('input', () => {
 					list.getList()[index].setPriority(Number(child.textContent));
 				});
-			} else if(child.classList.contains('title')){
+			} else if (child.classList.contains('title')) {
 				child.addEventListener('input', () => {
 					list.getList()[index].setTitle(child.textContent);
 				});
-			} else if(child.classList.contains('dueDate')){
+			} else if (child.classList.contains('dueDate')) {
 				child.addEventListener('input', () => {
 					list.getList()[index].setDueDate(child.textContent);
 				});
-			} else if(child.classList.contains('description')){
+			} else if (child.classList.contains('description')) {
 				child.addEventListener('input', () => {
 					list.getList()[index].setDescription(child.textContent);
 				});

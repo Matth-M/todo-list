@@ -1,5 +1,5 @@
 import './main.scss';
-import {Todo} from './todo'
+import { Todo } from './todo'
 import { TodoList } from './todoList';
 
 import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler, editListTagBtnHandler, todoItemDetailInputEventHandler } from './events'
@@ -192,7 +192,7 @@ function createInputComponent(inputId: string, labelContent: string, type: strin
 
 export function displayApp(list: TodoList): void {
 	const root = document.querySelector('.root');
-	while(root.hasChildNodes()){
+	while (root.hasChildNodes()) {
 		root.removeChild(root.firstChild);
 	}
 
@@ -201,8 +201,8 @@ export function displayApp(list: TodoList): void {
 	// Get all the todoList in the form of an array
 	// so we can call navComponent() with it
 	let allTodoLists: TodoList[] = [];
-	for(let key in listOfList) {
-		if(listOfList.hasOwnProperty(key)) {
+	for (let key in listOfList) {
+		if (listOfList.hasOwnProperty(key)) {
 			allTodoLists.push(listOfList[key]);
 		}
 	}

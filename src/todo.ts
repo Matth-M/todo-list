@@ -14,7 +14,7 @@ export const Todo = function(title: string, description: string, dueDate: string
 	const getTitle = (): string => {
 		return title;
 	}
-	
+
 	const getDescription = (): string => {
 		return description;
 	}

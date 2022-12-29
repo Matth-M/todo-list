@@ -1,6 +1,6 @@
-import {displayApp} from './display'
-import {Todo} from './todo'
-import {TodoList} from './todoList';
+import { displayApp } from './display'
+import { Todo } from './todo'
+import { TodoList } from './todoList';
 
 
 // Dummy item
@@ -16,7 +16,7 @@ mainList.addTodo(t1);
 mainList.addTodo(t2);
 
 const workList = TodoList('work');
-for(let i = 0; i < 5; i++){
+for (let i = 0; i < 3; i++) {
 	workList.addTodo(Todo('WorkItem', 'Gotta work', '02/01/2023', 1));
 }
 
