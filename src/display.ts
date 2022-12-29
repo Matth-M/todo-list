@@ -2,7 +2,7 @@ import './main.scss';
 import {Todo} from './todo'
 import { TodoList } from './todoList';
 
-import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler, editListTagBtnHandler } from './events'
+import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler, editListTagBtnHandler, todoItemDetailInputEventHandler } from './events'
 import { listOfList } from '.';
 
 function createTodoComponent(item: Todo, index: number): Element {
@@ -222,4 +222,5 @@ export function displayApp(list: TodoList): void {
 
 	addListBtnHandler();
 	editListTagBtnHandler(list);
+	todoItemDetailInputEventHandler(list);
 }

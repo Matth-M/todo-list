@@ -62,3 +62,32 @@ export function editListTagBtnHandler(list: TodoList) {
 		displayApp(list);
 	});
 }
+
+export function todoItemDetailInputEventHandler(list: TodoList){
+	// We get all the todo items displayed on the page
+	const todoItems = document.querySelectorAll('.todo');
+	todoItems.forEach(todoItem => {
+		const index = Number(todoItem.getAttribute('index'));
+		const itemContent = todoItem.childNodes;
+		itemContent.forEach((child: HTMLElement) => {
+			// We search which part of the todo item we are changing
+			if(child.classList.contains('priority')) {
+				child.addEventListener('input', () => {
+					list.getList()[index].setPriority(Number(child.textContent));
+				});
+			} else if(child.classList.contains('title')){
+				child.addEventListener('input', () => {
+					list.getList()[index].setTitle(child.textContent);
+				});
+			} else if(child.classList.contains('dueDate')){
+				child.addEventListener('input', () => {
+					list.getList()[index].setDueDate(child.textContent);
+				});
+			} else if(child.classList.contains('description')){
+				child.addEventListener('input', () => {
+					list.getList()[index].setDescription(child.textContent);
+				});
+			}
+		});
+	});
+}
