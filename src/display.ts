@@ -10,22 +10,35 @@ function createTodoComponent(item: Todo, index: number): Element {
 	todo.classList.add('todo');
 	todo.setAttribute('index', index.toString());
 
+	// Priority
 	const todoPriority = document.createElement('p');
+	todoPriority.setAttribute('contenteditable', 'true'); // To edit the todo item detail
 	todoPriority.textContent = item.getPriority().toString();
+	todoPriority.classList.add('priority');
 	todo.appendChild(todoPriority);
 
+	// Title
 	const todoTitle = document.createElement('h2');
+	todoTitle.setAttribute('contenteditable', 'true');
 	todoTitle.textContent = item.getTitle();
+	todoTitle.classList.add('title');
 	todo.appendChild(todoTitle);
 
+	// Due Date
 	const todoDueDate = document.createElement('p');
 	todoDueDate.textContent = item.getDueDate();
+	todoDueDate.classList.add('dueDate');
+	todoDueDate.setAttribute('contenteditable', 'true');
 	todo.appendChild(todoDueDate);
 
+	// Description
 	const todoDescription = document.createElement('p');
 	todoDescription.textContent = item.getDescription();
+	todoDescription.classList.add('descrption');
+	todoDescription.setAttribute('contenteditable', 'true');
 	todo.appendChild(todoDescription);
 
+	// Delete button
 	const deleteBtn = document.createElement('button');
 	deleteBtn.textContent = "DELETE";
 	deleteBtn.classList.add('delete')
