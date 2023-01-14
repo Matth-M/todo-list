@@ -17,8 +17,7 @@ interface listJSON {
 
 export function updateLocalStorage() {
 	//Update the lists tags
-	localStorage.setItem("listOfList", JSON.stringify(listOfList));
-	let listOfListJSON: listJSON[] = [];
+	const listOfListJSON: listJSON[] = [];
 
 	// Update each item of each list
 	Object.keys(listOfList).forEach((listTag: string) => {
@@ -42,7 +41,9 @@ export function updateLocalStorage() {
 		listOfListJSON.push(listJSON);
 	});
 
-	console.log(listOfListJSON);
+	localStorage.setItem("listOfList", JSON.stringify(listOfListJSON));
+
+	console.log(JSON.stringify(listOfListJSON));
 
 	// console.log(localStorage.getItem("listOfList"));
 	// console.log(listOfList);
