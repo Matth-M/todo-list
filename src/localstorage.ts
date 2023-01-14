@@ -44,7 +44,4 @@ export function updateLocalStorage() {
 	localStorage.setItem("listOfList", JSON.stringify(listOfListJSON));
 
 	console.log(JSON.stringify(listOfListJSON));
-
-	// console.log(localStorage.getItem("listOfList"));
-	// console.log(listOfList);
 }
