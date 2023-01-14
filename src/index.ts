@@ -1,4 +1,5 @@
 import { displayApp } from './display'
+import { updateLocalStorage } from './localstorage';
 import { Todo } from './todo'
 import { TodoList } from './todoList';
 
@@ -33,3 +34,4 @@ export let listOfList: {
 listOfList[workList.getTag()] = workList;
 
 displayApp(workList);
+updateLocalStorage();
