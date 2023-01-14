@@ -5,8 +5,8 @@ import { TodoList } from './todoList';
 
 
 // Dummy item
-let t1 = Todo("Train", "Rentrer", "20/12/22", 1);
-let t2 = Todo("Train", "Rentrer", "20/12/22", 1);
+const t1 = Todo("Train", "Rentrer", "20/12/22", 1);
+const t2 = Todo("Train", "Rentrer", "20/12/22", 1);
 t1.setDueDate("20/12/2022");
 t1.setTitle("Prendre le train");
 t1.setDescription("Faut bien rentrer chez soi");
@@ -25,8 +25,8 @@ for (let i = 0; i < 3; i++) {
 // The text content of the link is the tag of the todoList 
 // It is used as a key in this object to retrieve it when a click occurs
 
-export let listOfList: {
-	[index: string]: TodoList,
+export const listOfList: {
+	[tag: string]: TodoList,
 } = {
 	'main': mainList,
 }
