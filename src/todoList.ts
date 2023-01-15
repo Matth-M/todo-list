@@ -6,10 +6,10 @@ export interface TodoList {
 	addTodo(todo: Todo): void,
 	deleteTodo(index: number): void,
 	setTag(tag: string): void,
-};
+}
 
 export const TodoList = (tag: string): TodoList => {
-	let _list: Todo[] = [];
+	const _list: Todo[] = [];
 
 	let _tag = tag;
 
