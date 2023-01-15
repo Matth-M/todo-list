@@ -3,7 +3,7 @@ import { Todo } from './todo'
 import { TodoList } from './todoList';
 
 import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler, editListTagBtnHandler, todoItemDetailInputEventHandler } from './events'
-import { listOfList } from '.';
+import { listOfList } from './localstorage';
 
 function createTodoComponent(item: Todo, index: number): Element {
 	const todo = document.createElement('div');

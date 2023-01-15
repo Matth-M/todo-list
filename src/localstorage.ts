@@ -1,4 +1,3 @@
-import { listOfList } from "./index";
 import { TodoList } from "./todoList";
 
 
@@ -14,6 +13,10 @@ interface listJSON {
 	tag: string,
 }
 
+export const listOfList: {
+	[tag: string]: TodoList,
+} = {
+};
 
 export function updateLocalStorage() {
 	//Update the lists tags
@@ -44,4 +47,15 @@ export function updateLocalStorage() {
 	localStorage.setItem("listOfList", JSON.stringify(listOfListJSON));
 
 	console.log(JSON.stringify(listOfListJSON));
+}
+
+export function readFromLocalStorage() {
+	let listOfListJSON = localStorage.getItem("listOfList")
+	// Don't do anything if there is nothing in local storage
+	if (listOfListJSON === undefined) {
+		return;
+	}
+
+	listOfListJSON = JSON.parse(listOfListJSON);
+
 }

@@ -1,7 +1,7 @@
 import { TodoList } from './todoList'
 import { Todo } from './todo'
 import { displayApp } from './display'
-import { listOfList } from './index';
+import { listOfList } from './localstorage';
 
 export function deleteBtnHandler(list: TodoList) {
 	const deleteBtns = document.querySelectorAll('.todo > .delete');
