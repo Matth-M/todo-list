@@ -200,12 +200,11 @@ export function displayApp(list: TodoList): void {
 
 	// Get all the todoList in the form of an array
 	// so we can call navComponent() with it
-	let allTodoLists: TodoList[] = [];
-	for (let key in listOfList) {
-		if (listOfList.hasOwnProperty(key)) {
-			allTodoLists.push(listOfList[key]);
-		}
+	const allTodoLists: TodoList[] = [];
+	for (const key in listOfList) {
+		allTodoLists.push(listOfList[key]);
 	}
+
 	root.appendChild(navComponent(allTodoLists));
 
 	const main = document.createElement('main');
