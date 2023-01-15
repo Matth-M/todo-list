@@ -2,7 +2,7 @@ import './main.scss';
 import { Todo } from './todo'
 import { TodoList } from './todoList';
 
-import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler, editListTagBtnHandler, todoItemDetailInputEventHandler } from './events'
+import { deleteBtnHandler, addButtonHandler, listLinkBtnHandler, addListBtnHandler, editListTagBtnHandler, todoItemDetailInputEventHandler, deleteListBtnHendler } from './events'
 import { listOfList } from './localstorage';
 
 function createTodoComponent(item: Todo, index: number): Element {
@@ -74,10 +74,16 @@ function navComponent(lists: TodoList[]): Element {
 	lists.forEach((list) => {
 		// Links to display the selected list
 		const li = document.createElement('li');
+		li.setAttribute('tag', list.getTag());
 		const linkToList = document.createElement('a');
 		linkToList.href = '#';
 		linkToList.textContent = list.getTag();
 		li.appendChild(linkToList);
+
+		const deleteBtn = document.createElement('button');
+		deleteBtn.textContent = 'DELETE';
+		deleteBtn.classList.add('delete-list');
+		li.appendChild(deleteBtn);
 		ul.appendChild(li);
 	});
 
@@ -222,4 +228,5 @@ export function displayApp(list: TodoList): void {
 	addListBtnHandler();
 	editListTagBtnHandler(list);
 	todoItemDetailInputEventHandler(list);
+	deleteListBtnHendler(list);
 }

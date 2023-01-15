@@ -1,7 +1,7 @@
 import { TodoList } from './todoList'
 import { Todo } from './todo'
 import { displayApp } from './display'
-import { listOfList } from './localstorage';
+import { listOfList, updateLocalStorage } from './localstorage';
 
 export function deleteBtnHandler(list: TodoList) {
 	const deleteBtns = document.querySelectorAll('.todo > .delete');
@@ -14,6 +14,19 @@ export function deleteBtnHandler(list: TodoList) {
 			list.deleteTodo(index);
 			displayApp(list);
 		})
+	});
+}
+
+export function deleteListBtnHendler(list: TodoList) {
+	const deleteBtns = document.querySelectorAll('nav .delete-list');
+	deleteBtns.forEach((btn: HTMLButtonElement) => {
+		btn.addEventListener('click', () => {
+			const container = btn.parentElement;
+			const listTag = container.getAttribute('tag');
+			delete listOfList[listTag];
+			updateLocalStorage();
+			displayApp(list)
+		});
 	});
 }
 
