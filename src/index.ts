@@ -20,7 +20,7 @@ mainList.addTodo(t2);
 // The text content of the link is the tag of the todoList 
 // It is used as a key in this object to retrieve it when a click occurs
 
-localStorage[mainList.getTag()] = mainList;
+listOfList[mainList.getTag()] = mainList;
 
 displayApp(mainList);
 readFromLocalStorage();
