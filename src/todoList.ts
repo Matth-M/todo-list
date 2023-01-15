@@ -1,3 +1,4 @@
+import { updateLocalStorage } from "./localstorage";
 import { Todo } from "./todo";
 
 export interface TodoList {
@@ -23,14 +24,17 @@ export const TodoList = (tag: string): TodoList => {
 
 	const setTag = (tag: string) => {
 		_tag = tag;
+		updateLocalStorage();
 	}
 
 	const addTodo = (todo: Todo) => {
 		_list.push(todo);
+		updateLocalStorage();
 	}
 
 	const deleteTodo = (index: number) => {
 		_list.splice(index, 1);
+		updateLocalStorage();
 	}
 
 	return {
