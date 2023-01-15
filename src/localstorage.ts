@@ -1,3 +1,4 @@
+import { Todo } from "./todo";
 import { TodoList } from "./todoList";
 
 
@@ -50,12 +51,21 @@ export function updateLocalStorage() {
 }
 
 export function readFromLocalStorage() {
-	let listOfListJSON = localStorage.getItem("listOfList")
+	const listOfListStorage: listJSON[] = JSON.parse(localStorage.getItem("listOfList"));
 	// Don't do anything if there is nothing in local storage
-	if (listOfListJSON === undefined) {
+	if (listOfListStorage === undefined) {
 		return;
 	}
 
-	listOfListJSON = JSON.parse(listOfListJSON);
+	listOfListStorage.forEach((listStorage: listJSON) => {
+		const todoList: TodoList = TodoList(listStorage.tag);
+		listStorage.list.forEach((todoStorage: todoJSON) => {
+			const todo: Todo = Todo(todoStorage.title, todoStorage.description, todoStorage.dueDate, todoStorage.priority);
+			todoList.addTodo(todo);
+		});
+		listOfList[todoList.getTag()] = todoList;
+	});
+
+
 
 }
