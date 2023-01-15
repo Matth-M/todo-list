@@ -1,23 +1,21 @@
 import { Todo } from "./todo";
 import { TodoList } from "./todoList";
 
-
 interface todoJSON {
-	priority: number,
-	description: string,
-	title: string,
-	dueDate: string,
+	priority: number;
+	description: string;
+	title: string;
+	dueDate: string;
 }
 
 interface listJSON {
-	list: todoJSON[],
-	tag: string,
+	list: todoJSON[];
+	tag: string;
 }
 
 export const listOfList: {
-	[tag: string]: TodoList,
-} = {
-};
+	[tag: string]: TodoList;
+} = {};
 
 export function updateLocalStorage() {
 	//Update the lists tags
@@ -51,7 +49,9 @@ export function updateLocalStorage() {
 }
 
 export function readFromLocalStorage() {
-	const listOfListStorage: listJSON[] = JSON.parse(localStorage.getItem("listOfList"));
+	const listOfListStorage: listJSON[] = JSON.parse(
+		localStorage.getItem("listOfList")
+	);
 	// Don't do anything if there is nothing in local storage
 	if (listOfListStorage === undefined) {
 		return;
@@ -60,12 +60,14 @@ export function readFromLocalStorage() {
 	listOfListStorage.forEach((listStorage: listJSON) => {
 		const todoList: TodoList = TodoList(listStorage.tag);
 		listStorage.list.forEach((todoStorage: todoJSON) => {
-			const todo: Todo = Todo(todoStorage.title, todoStorage.description, todoStorage.dueDate, todoStorage.priority);
+			const todo: Todo = Todo(
+				todoStorage.title,
+				todoStorage.description,
+				todoStorage.dueDate,
+				todoStorage.priority
+			);
 			todoList.addTodo(todo);
 		});
 		listOfList[todoList.getTag()] = todoList;
 	});
-
-
-
 }
